@@ -15,7 +15,7 @@ document.querySelector('#app').innerHTML = `
     <div id="libraryContainer" class="grid gridLibrary"></div>
 
     
-    <div class="fixed inset-0" id="bookFormContainer">
+    <div class="fixed inset-0 hidden" id="bookFormContainer">
       <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
       
       <section class="absolute inset-y-0 right-0 max-w-full flex">

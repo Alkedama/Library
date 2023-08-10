@@ -1,6 +1,6 @@
-# MyLibrary
+# Library
 
-MyLibrary is a simple JavaScript library that provides functions for adding, viewing, and deleting items.
+Library is a simple JavaScript library that provides functions for adding, viewing, and deleting items.
 
 ## Features
 
