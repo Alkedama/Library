@@ -2,10 +2,11 @@ import './assets/style.scss'
 
 document.querySelector('#app').innerHTML = `
   <div>
-    <button id="btnAdd">Add</button>
-    <button id="btnView">View</button>
-
-    <div id="bookContainer"></div>
+    <button id="btnAdd" class="bg-slate-500/50 p-2 rounded">Add</button>
+    <button id="btnView" class="bg-slate-500/50 p-2 rounded">View</button>
+    <h1 class="text-3xl font-bold underline">
+  </h1>
+    <div id="libraryContainer"></div>
   </div>
 `
 
@@ -29,35 +30,57 @@ Book.prototype.info = function(){
 }
 
 function addBookToLibrary(book){
+  book.info();
+  libraryContainer.appendChild(lblAdd);
+
+  lblAdd.textContent = book.info();
   myLibrary.push(book);
 }
 
-let output = new Book('Magna Carta', 'Rudra', 100, false);
+function viewBookFromLibrary(book){
+  for(let i = 0; i < book.length; i++){
+  console.log(book.length);
+  const bookContainer = document.createElement('div');
+  bookContainer.classList.add('bg-slate-500/50', 'p-2', 'rounded', 'm-2');
 
-output.info();
+  libraryContainer.appendChild(bookContainer);
+  
+  const lblTitle = document.createElement('div');
+  const lblAuthor = document.createElement('div');
+  const lblPages = document.createElement('div');
+  const lblRead = document.createElement('div');
+
+  bookContainer.append(lblTitle, lblAuthor, lblPages, lblRead);
+
+  lblTitle.textContent = book[i].author;
+  lblAuthor.textContent = book[i].title;
+  lblPages.textContent = book[i].pages;
+  lblRead.textContent = book[i].read;
+
+  const btnDelete = document.createElement('button');
+  btnDelete.textContent = 'Delete';
+
+  bookContainer.appendChild(btnDelete);
+  btnDelete.classList.add('bg-red-500/50', 'p-2', 'rounded', 'mx-2');
+  }
+}
 
 const btnAdd = document.querySelector('#btnAdd');
 const btnView = document.querySelector('#btnView');
 
-const bookContainer = document.querySelector('#bookContainer');
+const libraryContainer = document.querySelector('#libraryContainer');
 
 const lblAdd = document.createElement('div');
-const lblView = document.createElement('div')
 
 btnAdd.addEventListener('click', () => {
-  bookContainer.appendChild(lblAdd);
-
   console.log('clickAdd');
-  addBookToLibrary(output);
-  lblAdd.textContent = output.info();
+  let book = new Book('Magna Carta', 'Rudra', 100, false);
+
+  addBookToLibrary(book);
 });
 
 btnView.addEventListener('click', () => {
-  bookContainer.appendChild(lblView);
-
   console.log('clickView');
-  let firstObject = myLibrary[0];
 
-  console.log(firstObject.author);
-  lblView.textContent = firstObject;
+  viewBookFromLibrary(myLibrary);
 });

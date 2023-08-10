@@ -1,5 +1,9 @@
-$background-color: #ffa1a1;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-*{
+$background-color: #a1cdff;
+
+html{
     background-color: $background-color;
 }
