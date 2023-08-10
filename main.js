@@ -1,4 +1,5 @@
-import './assets/style.scss'
+import './scss/tailwind.scss'
+import './scss/style.scss'
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -6,7 +7,7 @@ document.querySelector('#app').innerHTML = `
     <button id="btnView" class="bg-slate-500/50 p-2 rounded">View</button>
     <h1 class="text-3xl font-bold underline">
   </h1>
-    <div id="libraryContainer"></div>
+    <div id="libraryContainer" class="grid gridLibrary"></div>
   </div>
 `
 
@@ -45,17 +46,17 @@ function viewBookFromLibrary(book){
 
   libraryContainer.appendChild(bookContainer);
   
-  const lblTitle = document.createElement('div');
+  const lblTitle = document.createElement('h2');
   const lblAuthor = document.createElement('div');
   const lblPages = document.createElement('div');
   const lblRead = document.createElement('div');
 
   bookContainer.append(lblTitle, lblAuthor, lblPages, lblRead);
 
-  lblTitle.textContent = book[i].author;
-  lblAuthor.textContent = book[i].title;
-  lblPages.textContent = book[i].pages;
-  lblRead.textContent = book[i].read;
+  lblTitle.textContent = book[i].title;
+  lblAuthor.textContent = `By: ${book[i].author}`;
+  lblPages.textContent = `Pages: ${book[i].pages}`;
+  lblRead.textContent = (book[i].read) ? `Status: Read` : `Status: Unread`;
 
   const btnDelete = document.createElement('button');
   btnDelete.textContent = 'Delete';
