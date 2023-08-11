@@ -7,3 +7,11 @@ Library is a simple JavaScript library that provides functions for adding, viewi
 - Add: Add new items to the collection.
 - View: View the list of added items.
 - Delete: Remove items from the collection.
+
+
+## Technology Used
+
+- JavaScript
+- Vite
+- Tailwind
+- SCSS
